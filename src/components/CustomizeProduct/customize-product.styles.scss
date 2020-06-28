@@ -1,0 +1,26 @@
+.customize-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+  #mb-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .product-img {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  .custom-feature {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .colors-picked {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.288);
+    .text {
+      padding-bottom: 10px;
+    }
+    margin-bottom: 10px;
+  }
+}
