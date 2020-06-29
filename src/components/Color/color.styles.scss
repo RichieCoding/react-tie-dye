@@ -1,0 +1,24 @@
+.color-container {
+  position: relative;
+  background: white;
+  width: 32px;
+  height: 32px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  .color {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    // background: red;
+    border-radius: 50%;
+  }
+  &.active {
+    transform: scale(1.1);
+  }
+}

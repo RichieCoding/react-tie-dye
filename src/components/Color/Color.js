@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Color = () => {
+import './color.styles.scss';
+
+const Color = ({ color, click, active }) => {
   return (
-    <div className='color-container'>
-      
+    <div className='color-container' onClick={() => {click(color)}}>
+      <div className="color" style={{'background': color}}></div>
     </div>
   )
 }

@@ -3,16 +3,16 @@ import React from 'react';
 import './home.styles.scss';
 
 import nike from '../../assets/imgs/Nike-Sock.png';
-import adidas from '../../assets/imgs/Adidas-Sock.png';
+import blackNike from '../../assets/imgs/Nike-Black-Sock.png';
+import greyNike from '../../assets/imgs/Nike-Grey-Sock.png';
 import HomeProduct from '../../components/HomeProduct/HomeProduct';
-import CustomizeProduct from '../../components/CustomizeProduct/CustomizeProduct';
 
-const Home = () => {
+const Home = ({ click }) => {
   return (
     <div className='home-container'>
-      <CustomizeProduct productImg={nike} name={'Nike'} />
-      {/* <HomeProduct productImg={nike} name={'Nike'} />
-      <HomeProduct productImg={adidas} name={'Adidas'} /> */}
+      <HomeProduct click={click} productImg={nike} name={'Nike'} color={'White'} />
+      <HomeProduct click={click} productImg={blackNike} name={'Nike'} color={'Black'} />
+      <HomeProduct click={click} productImg={greyNike} name={'Nike'} color={'Grey'} />
     </div>
   );
 };
