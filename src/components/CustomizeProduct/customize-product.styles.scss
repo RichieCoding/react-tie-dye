@@ -52,17 +52,17 @@
     margin-bottom: 80px;
     button {
       font-size: 0.9rem;
-        border: 1.1px solid black;
-        background: transparent;
-        padding: 20px 35px;
-        cursor: pointer;
-        outline: none;
-        margin-top: 1.2rem;
-        transition: ease-in-out 0.4s;
-        &:hover {
-          background: black;
-          color: white;
-        }
+      border: 1.7px solid black;
+      background: transparent;
+      padding: 20px 35px;
+      cursor: pointer;
+      outline: none;
+      margin-top: 1.2rem;
+      transition: ease-in-out 0.4s;
+      &:hover {
+        background: black;
+        color: white;
+      }
     }
   }
 }
@@ -75,11 +75,11 @@
     text-align: center;
 
     .custom-feature {
-      width: 50%;
+      width: 40%;
       margin: 0 auto;
     }
     .product-img {
-      width: 40%;
+      width: 30%;
     }
   }
 }
