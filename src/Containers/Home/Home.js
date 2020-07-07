@@ -10,9 +10,9 @@ import HomeProduct from '../../components/HomeProduct/HomeProduct';
 const Home = ({ click }) => {
   return (
     <div className='home-container'>
-      <HomeProduct click={click} productImg={nike} name={'Nike'} color={'White'} />
-      <HomeProduct click={click} productImg={blackNike} name={'Nike'} color={'Black'} />
-      <HomeProduct click={click} productImg={greyNike} name={'Nike'} color={'Grey'} />
+      <HomeProduct click={click} productImg={nike} name={'Nike Tie-Dye Socks'} color={'White'} />
+      <HomeProduct click={click} productImg={blackNike} name={'Nike Tie-Dye Socks'} color={'Black'} />
+      <HomeProduct click={click} productImg={greyNike} name={'Nike Tie-Dye Socks'} color={'Grey'} />
     </div>
   );
 };

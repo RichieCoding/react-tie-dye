@@ -1,7 +1,7 @@
 import React from 'react';
 import Color from '../Color/Color';
 
-const ColorPalette = ({ colorsPicked, colors, colorClick }) => {
+const ColorPalette = ({ colorsPicked, colors, colorClick, sockPrice }) => {
   return (
     <React.Fragment>
       <div className='colors-picked'>
@@ -14,7 +14,10 @@ const ColorPalette = ({ colorsPicked, colors, colorClick }) => {
                 <Color key={color} color={color} click={colorClick} />
               ))}
             </div>
-            {colorsPicked.length < 3 ? (
+            <p>
+              Price: <span style={{ fontSize: '20px' }}>{sockPrice}</span>
+              </p>
+            {/* {colorsPicked.length < 3 ? (
               <p>
                 Price: <span style={{ fontSize: '20px' }}>$15</span>
               </p>
@@ -22,7 +25,7 @@ const ColorPalette = ({ colorsPicked, colors, colorClick }) => {
               <p>
                 Price: <span style={{ fontSize: '20px' }}>$16</span>
               </p>
-            )}
+            )} */}
           </div>
         )}
       </div>
