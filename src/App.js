@@ -1,33 +1,35 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/NavBar/Navbar';
 import Home from './Containers/Home/Home';
-import CustomizeProduct from './components/CustomizeProduct/CustomizeProduct'
-
-import nike from './assets/imgs/Nike-Sock.png';
-import blackNike from './assets/imgs/Nike-Black-Sock.png';
-import greyNike from './assets/imgs/Nike-Grey-Sock.png';
+import CustomizeProduct from './components/CustomizeProduct/CustomizeProduct';
+import { CartProvider } from './contexts/cart';
+import CartPage from './Containers/CartPage/CartPage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  const [page, setPage] = useState('home')
-  const renderPage = () => {
-    switch(page) {
-      case 'home':
-        return <Home click={setPage} />
-      case 'White':
-        return <CustomizeProduct productImg={nike} name={'Nike'} />
-      case 'Black':
-        return <CustomizeProduct productImg={blackNike} name={'Nike'} />
-      case 'Grey':
-        return <CustomizeProduct productImg={greyNike} name={'Nike'} />
-      default: 
-        return <Home />
-    }
-  }
+  const [cart, setCart] = useState([{
+    colorsPicked: ['Black, Teal'],
+    price: 15,
+    sockColor: 'White',
+    sockImg: "/static/media/Nike-Sock.73a753e7.png",
+    sockName: "Nike Tie-Dye Socks"
+  }]);
+  const cartObj = { cart, setCart };
   return (
-    <div className='App'>
-      <Navbar />
-      {renderPage()}
-    </div>
+    <Router>
+      <ScrollToTop />
+      <CartProvider value={cartObj}>
+        <div className='App'>
+          <Navbar />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/customize/:productId' component={CustomizeProduct} />
+            <Route path='/cart' component={CartPage} />
+          </Switch>
+        </div>
+      </CartProvider>
+    </Router>
   );
 }
 

@@ -6,15 +6,22 @@
   #mb-title {
     // text-align: center;
     margin-bottom: 35px;
+    h2 {
+      margin-bottom: 10px;
+    }
   }
   .product-img {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     margin-bottom: 30px;
   }
   .custom-feature {
     width: 90%;
     margin: 0 auto;
+
+    .sock-color {
+      text-align: left;
+    }
   }
   .colors-picked {
     display: flex;
@@ -62,6 +69,12 @@
       &:hover {
         background: black;
         color: white;
+      }
+    }
+    #btn-disabled {
+      &:hover {
+        background: transparent;
+        color: inherit;
       }
     }
   }
