@@ -4,6 +4,7 @@ import { CartConsumer } from '../../contexts/cart';
 import nikeWhite from '../../assets/imgs/Nike-Sock.png';
 import nikeBlack from '../../assets/imgs/Nike-Black-Sock.png';
 import nikeGrey from '../../assets/imgs/Nike-Grey-Sock.png';
+import { colorData } from '../../utils/colorData';
 import './customize-product.styles.scss';
 
 const CustomizeProduct = ({ match }) => {
@@ -12,24 +13,9 @@ const CustomizeProduct = ({ match }) => {
     img: nikeWhite,
   });
   const [price, setPrice] = useState(15);
+  const [size, setSize] = useState(null);
   const [colorsPicked, setColorsPicked] = useState([]);
   const [atcBtn, setAtcBtn] = useState('Add to Cart');
-  const colors = [
-    'Black',
-    'Violet',
-    'Purple',
-    'Blue',
-    'Turquoise',
-    'Teal',
-    'Green',
-    'Pink',
-    'Fuchsia',
-    'Red',
-    'Coral',
-    'Orange',
-    'Yellow',
-    'Lime',
-  ];
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];
@@ -73,14 +59,18 @@ const CustomizeProduct = ({ match }) => {
       sockImg: sock.img,
       price: price,
       colorsPicked: colorsPicked,
+      size: size,
     };
-    if (colorsPicked.length >= 2) {
+    if (colorsPicked.length >= 2 && size) {
       setCart([...cart, productObj]);
+      console.log([...cart, productObj])
+      localStorage.cart = JSON.stringify([...cart, productObj])
       setAtcBtn('\u00A0\u00A0\u00A0\u00A0Added\u00A0\u00A0\u00A0\u00A0');
       setColorsPicked([]);
+      setSize(null);
       setTimeout(() => {
         setAtcBtn('Add to Cart');
-      }, 1500);
+      }, 1000);
     }
   };
 
@@ -97,14 +87,44 @@ const CustomizeProduct = ({ match }) => {
             </div>
 
             <ColorPalette
-              colors={colors}
+              colors={colorData}
               colorsPicked={colorsPicked}
               colorClick={handleColorClick}
               sockPrice={price}
             />
-
+            <div className='product-size'>
+              <button
+                style={
+                  size === 'Adult'
+                    ? { background: 'black', color: 'white' }
+                    : null
+                }
+                onClick={() => setSize('Adult')}
+              >
+                Adult
+              </button>
+              <button
+                style={
+                  size === 'Child'
+                    ? { background: 'black', color: 'white' }
+                    : null
+                }
+                onClick={() => setSize('Child')}
+              >
+                Child
+              </button>
+            </div>
             <div className='text-info'>
-              <button onClick={() => handleAtc(cart, setCart)}>{atcBtn}</button>
+              <button
+                style={
+                  atcBtn !== 'Add to Cart'
+                    ? { background: 'black', color: 'white' }
+                    : null
+                }
+                onClick={() => handleAtc(cart, setCart)}
+              >
+                {atcBtn}
+              </button>
             </div>
           </div>
         </div>

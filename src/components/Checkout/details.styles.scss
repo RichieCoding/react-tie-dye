@@ -1,0 +1,35 @@
+.details-container {
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    
+    label {
+      display: table;
+      margin: 0px auto 20px 0px;
+      background: black;
+      color: white;
+      padding: 5px 10px;
+      
+    }
+    input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid black;
+      font-size: 2rem;
+      padding: 10px 0;
+      outline: none;
+      margin-bottom: 20px;
+    }
+  }
+  .page-btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0 80px;
+    button {
+      font-size: 1.1rem;
+      padding: 10px 25px;
+      background: transparent;
+      outline: none;
+    }
+  }
+}

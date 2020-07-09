@@ -2,6 +2,7 @@ import React from 'react';
 import './cart-page.styles.scss';
 import { CartConsumer } from '../../contexts/cart';
 import CartProductCard from '../../components/CartProductCard/CartProductCard';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   return (
@@ -38,7 +39,9 @@ const CartPage = () => {
                     }, 0)}
                   </p>
                 </div>
-                <button id='checkout-btn'>Checkout</button>
+                <Link to='/checkout'>
+                  <button id='checkout-btn'>Checkout</button>
+                </Link>
               </div>
             </div>
           )}

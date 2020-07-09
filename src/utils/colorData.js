@@ -1,0 +1,16 @@
+export const colorData = [
+  'Black',
+  'Violet',
+  'Purple',
+  'Blue',
+  'Turquoise',
+  'Teal',
+  'Green',
+  'Pink',
+  'Fuchsia',
+  'Red',
+  'Coral',
+  'Orange',
+  'Yellow',
+  'Lime',
+];
