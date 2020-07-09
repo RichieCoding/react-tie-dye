@@ -1,0 +1,25 @@
+.shipping-container {
+  ul {
+    margin-bottom: 80px;
+    li {
+      list-style-type: none;
+      margin-top: 25px;
+      border: 1px solid black;
+      padding: 30px;
+      .option {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+  .page-btn {
+    display: flex;
+    flex-direction: row-reverse;
+    button {
+      font-size: 1.1rem;
+      padding: 10px 25px;
+      background: transparent;
+      outline: none;
+    }
+  }
+}

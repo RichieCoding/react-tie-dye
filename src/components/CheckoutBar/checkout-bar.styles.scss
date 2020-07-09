@@ -1,0 +1,57 @@
+.checkout-bar {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 80px;
+
+  ul {
+    border-radius: 30px;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.1);
+    background: rgb(162,84,251);
+    background: transparent;
+    border: 1px solid black;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1 1 auto;
+      text-align: center;
+      color: black;
+      font-size: 12px;
+      border-right: 1px solid black;
+      padding: 15px;
+      list-style-type: none;
+      transition: ease-in-out .4s;
+      cursor: pointer;
+      &:hover { 
+        background: black;
+        color: white;
+      }
+      &:nth-last-child(1) {
+        border-right: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .checkout-bar {
+    width: 60%;
+    margin: 0 auto;
+    ul {
+      li {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Go to the recruiter
+// Find the hiring manager for the position
+// Head of Engineering, Tech Lead, 
+// Find someone else, whos a senior developer
+// Can I learn more about the role

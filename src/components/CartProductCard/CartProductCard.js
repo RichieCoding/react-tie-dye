@@ -3,13 +3,14 @@ import './cart-product-card.styles.scss';
 // import Color from '../Color/Color';
 
 const CartProductCard = ({ productInfo, cart, setCart, index }) => {
-  const { sockImg, sockName, colorsPicked, price } = productInfo;
+  const { sockImg, sockName, colorsPicked, price, size } = productInfo;
   const handleRemoveItem = (index) => {
-    const newCart = [...cart]
-    const front = newCart.slice(0, index)
-    const back = newCart.slice(index+1)
-    setCart([...front, ...back])
-  }
+    const newCart = [...cart];
+    const front = newCart.slice(0, index);
+    const back = newCart.slice(index + 1);
+    setCart([...front, ...back]);
+    localStorage.cart = JSON.stringify([...front, ...back]);
+  };
   return (
     <div className='cart-product-card'>
       <img src={sockImg} alt='product' />
@@ -19,7 +20,7 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
           <button onClick={() => handleRemoveItem(index)}>X</button>
         </div>
         <div className='product-size info'>
-          <p>Size: Adult</p>
+          <p>Size: {size}</p>
         </div>
         <div className='colors-picked info'>
           <div className='colors-text'>Colors: {colorsPicked.join(', ')}</div>
@@ -29,7 +30,7 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
             ))}
           </div> */}
         </div>
-        <div className="product-price">
+        <div className='product-price'>
           <p id='price'>{`$${price}`}</p>
         </div>
       </div>
