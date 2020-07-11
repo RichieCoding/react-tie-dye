@@ -6,6 +6,11 @@
       margin-top: 25px;
       border: 1px solid black;
       padding: 30px;
+      cursor: pointer;
+      &:hover {
+        background: black;
+        color: white;
+      }
       .option {
         display: flex;
         justify-content: space-between;
@@ -15,11 +20,24 @@
   .page-btn {
     display: flex;
     flex-direction: row-reverse;
+    margin: 50px 0 80px;
     button {
       font-size: 1.1rem;
       padding: 10px 25px;
       background: transparent;
       outline: none;
+      transition: ease-in-out .3s;
+      &:hover {
+        background: black;
+        color: white;
+      }
     }
+  }
+}
+
+@media (min-width: 770px) {
+  .shipping-container {
+    width: 70%;
+    margin: 80px auto;
   }
 }
