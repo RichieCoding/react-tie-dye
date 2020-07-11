@@ -17,7 +17,9 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
       <div className='product-info info'>
         <div className='title-remove-btn'>
           <h3 id='product-title'>{sockName}</h3>
-          <button onClick={() => handleRemoveItem(index)}>X</button>
+          {setCart ? (
+            <button onClick={() => handleRemoveItem(index)}>X</button>
+          ) : null}
         </div>
         <div className='product-size info'>
           <p>Size: {size}</p>

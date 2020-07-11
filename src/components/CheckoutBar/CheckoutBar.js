@@ -11,7 +11,7 @@ const CheckoutBar = ({ options, page, setPage }) => {
             style={
               page === index ? { background: 'black', color: 'white' } : null
             }
-            onClick={() => setPage(index)}
+            // onClick={() => setPage(index)}
           >
             {option}
           </li>

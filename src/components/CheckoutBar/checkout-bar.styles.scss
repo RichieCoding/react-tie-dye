@@ -1,7 +1,7 @@
 .checkout-bar {
   width: 100%;
   margin-top: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 
   ul {
     border-radius: 30px;
@@ -26,11 +26,11 @@
       padding: 15px;
       list-style-type: none;
       transition: ease-in-out .4s;
-      cursor: pointer;
-      &:hover { 
-        background: black;
-        color: white;
-      }
+      // cursor: pointer;
+      // &:hover { 
+      //   background: black;
+      //   color: white;
+      // }
       &:nth-last-child(1) {
         border-right: none;
       }

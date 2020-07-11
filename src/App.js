@@ -18,11 +18,11 @@ function App() {
       setCart(lsCart)
     }
   }, [])
-  const cartObj = { cart, setCart };
+  // const cartObj = { cart, setCart };
   return (
     <Router>
       <ScrollToTop />
-      <CartProvider value={cartObj}>
+      <CartProvider value={{ cart, setCart }}>
         <div className='App'>
           <Navbar />
           <Switch>

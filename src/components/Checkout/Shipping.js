@@ -15,6 +15,7 @@ const Shipping = ({ cart, setPage, setShipping, shipping }) => {
   return (
     <div className='shipping-container'>
       <ul>
+        <h3>Choose Shipping: </h3>
         <li
           style={shipping === 'Shipping' ? btnStyle : null}
           onClick={() => setShipping('Shipping')}

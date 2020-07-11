@@ -2,9 +2,10 @@
   .input-container {
     display: flex;
     flex-direction: column;
+
     
     label {
-      display: table;
+      // display: table;
       margin: 0px auto 20px 0px;
       background: black;
       color: white;
@@ -24,12 +25,37 @@
   .page-btn {
     display: flex;
     justify-content: space-between;
-    margin: 60px 0 80px;
+    margin: 50px 0 80px;
     button {
       font-size: 1.1rem;
       padding: 10px 25px;
       background: transparent;
       outline: none;
+      transition: ease-in-out .3s;
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+  .error {
+    content: "";
+    height: 10px;
+  }
+}
+
+@media (min-width: 770px) {
+  .details-container {
+    width: 70%;
+    margin: 0 auto;
+    .form-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 80px;
+      .input-container {
+        width: 45%;
+      }
     }
   }
 }

@@ -17,6 +17,11 @@ body {
   margin: 0 auto;
 }
 
+button {
+  outline: none;
+  cursor: pointer;
+}
+
 body.active {
   overflow: hidden;
 }

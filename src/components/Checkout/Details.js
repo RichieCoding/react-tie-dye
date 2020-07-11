@@ -1,95 +1,68 @@
 import React, { useState } from 'react';
 import './details.styles.scss';
 
-const Details = ({ shipping, setPage }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [state, setState] = useState('');
-  const [city, setCity] = useState('');
-  const [zipcode, setZipCode] = useState('');
+const Details = ({ shipping, setPage, names, inputNames, handleInputs }) => {
+  const [missingField, setMissingField] = useState(false)
+  const handleNextPage = () => {
+    let len = inputNames[0].length;
+    let len2 = inputNames[1].length;
+    for (let i = 0; i < len; i++) {
+      if (inputNames[0][i] === '') {
+        setMissingField(true)
+        return
+      }
+    }
+    if (shipping === 'Shipping') {
+      for (let i = 0; i < len2; i++) {
+        if (inputNames[1][i] === '') {
+          setMissingField(true)
+          return
+        }
+      }
+    } 
+    setPage(2)
+  }
   return (
     <div className='details-container'>
-      <div className='input-container'>
-        <label htmlFor='name'>Full Name</label>
-        <input
-          value={name}
-          id='name'
-          onChange={(e) => setName(e.target.value)}
-          type='text'
-        />
+      <div className='form-container'>
+        {names[0].map((name, index) => (
+          <div key={index} className='input-container'>
+            <label htmlFor={name}>{name}</label>
+            <input
+              id={name}
+              value={inputNames[0][index]}
+              type='text'
+              name={name}
+              onChange={(e) => handleInputs[0][index](e.target.value)}
+            />
+          </div>
+        ))}
+        {shipping === 'Shipping' ? (
+          <React.Fragment>
+            {names[1].map((name, index) => (
+              <div key={index} className='input-container'>
+                <label htmlFor={name}>{name}</label>
+                <input
+                  id={name}
+                  value={inputNames[1][index]}
+                  type='text'
+                  name={name}
+                  onChange={(e) => handleInputs[1][index](e.target.value)}
+                />
+              </div>
+            ))}
+          </React.Fragment>
+        ) : null}
       </div>
-      <div className='input-container'>
-        <label htmlFor='email'>Email</label>
-        <input
-          value={email}
-          id='email'
-          onChange={(e) => setEmail(e.target.value)}
-          type='text'
-        />
+      <div className="error">
+        {
+          missingField ? <p style={{color: 'black'}}>* Please enter into all fields</p> : null
+        }
       </div>
-      <div className='input-container'>
-        <label htmlFor='phone'>Phone Number</label>
-        <input
-          value={phone}
-          id='phone'
-          onChange={(e) => setPhone(e.target.value)}
-          type='text'
-        />
-      </div>
-      {shipping === 'Shipping' ? (
-        <React.Fragment>
-          <div className='input-container'>
-            <label htmlFor='address'>Address</label>
-            <input
-              value={address}
-              id='address'
-              onChange={(e) => setAddress(e.target.value)}
-              type='text'
-            />
-          </div>
-          <div className='input-container'>
-            <label htmlFor='state'>State</label>
-            <input
-              value={state}
-              id='state'
-              onChange={(e) => setState(e.target.value)}
-              type='text'
-            />
-          </div>
-          <div className='input-container'>
-            <label htmlFor='city'>City</label>
-            <input
-              value={city}
-              id='city'
-              onChange={(e) => setCity(e.target.value)}
-              type='text'
-            />
-          </div>
-          <div className='input-container'>
-            <label htmlFor='zipcode'>ZipCode</label>
-            <input
-              value={zipcode}
-              id='zipcode'
-              onChange={(e) => setZipCode(e.target.value)}
-              type='text'
-            />
-          </div>
-        </React.Fragment>
-      ) : null}
-      <div className="page-btn">
+      <div className='page-btn'>
         <button onClick={() => setPage(0)}>Back</button>
-        <button onClick={() => setPage(2)}>Next</button>
+        <button onClick={handleNextPage}>Next</button>
       </div>
-      {/* <label htmlFor='email'>Email</label>
-      <input
-        value={email}
-        name='email'
-        id='email'
-        onChange={(e) => setEmail(e.target.value)}
-        type='text'
-      /> */}
     </div>
   );
 };
