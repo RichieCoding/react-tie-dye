@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import './order-summary.styles.scss';
 import CartProductCard from '../CartProductCard/CartProductCard';
+import emailjs from 'emailjs-com';
+import { CartConsumer } from '../../contexts/cart';
 
-const OrderSummary = ({ inputNames, shipping, cart, setPage }) => {
+const OrderSummary = ({
+  inputNames,
+  shipping,
+  cart,
+  setPage,
+  setPayment,
+  payment,
+}) => {
   const [shippingPrice, setShippingPrice] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const [payment, setPayment] = useState('');
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     setSubtotal(() =>
       cart.reduce((acc, cur) => {
         return acc + cur.price;
       }, 0)
     );
     handleShipping();
-    setTotal(() => subtotal + shippingPrice)
+    setTotal(() => subtotal + shippingPrice);
   });
 
   const handleShipping = () => {
@@ -29,74 +37,139 @@ const OrderSummary = ({ inputNames, shipping, cart, setPage }) => {
     }
   };
 
+  const handlePlaceOrder = () => {
+    if (payment === '' || payment === 'Choose Payment Method') return;
+
+    let templateParams;
+    let templateId;
+
+    if (shipping === 'Pickup') {
+      templateParams = {
+        shipping: shipping,
+        to_name: 'Jasmine',
+        from_name: inputNames[0][0],
+        email: inputNames[0][1],
+        phone_number: inputNames[0][2],
+        payment_method: payment,
+        items_ordered: cart.length,
+        items: JSON.stringify(cart),
+        subtotal: subtotal,
+        total: total,
+      };
+      templateId = 'rsvp_acj';
+    }
+    if (shipping === 'Shipping') {
+      templateParams = {
+        shipping: shipping,
+        to_name: 'Jasmine',
+        from_name: inputNames[0][0],
+        email: inputNames[0][1],
+        phone_number: inputNames[0][2],
+        address: inputNames[1][0],
+        state: inputNames[1][1],
+        city: inputNames[1][2],
+        zipcode: inputNames[1][3],
+        payment_method: payment,
+        items_ordered: cart.length,
+        items: JSON.stringify(cart),
+        subtotal: subtotal,
+        shipping_cost: shippingPrice,
+        total: total,
+      };
+      templateId = 'template_ERb80S2H';
+    }
+    // emailjs
+    //   .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       setPage(3);
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
+      setPage(3)
+  };
+
   return (
-    <div className='order-summary-container'>
-      <div className='payment-option info-container'>
-        <h3 className='order-title'>Payment:</h3>
-        <select onChange={e => setPayment(e.target.value)} name='payment' id='payment'>
-          <option value='Choose Payment Method'>
-            Choose Payment Method...
-          </option>
-          <option value='Cashapp'>Cashapp</option>
-          <option value='Venmo'>Venmo</option>
-          {shipping === 'Pickup' ? <option value='Cash'>Cash</option> : null}
-        </select>
-      </div>
-      <div className="shipping-pickup-container">
-        <div className='pickup-info info-container'>
-          <h3 className='order-title'>Your Info:</h3>
-          {inputNames[0].map((input, index) => (
-            <p key={index}>{`${input}`}</p>
-          ))}
-        </div>
-        {shipping === 'Shipping' ? (
-          <div className='shipping-address info-container'>
-            <h3 className='order-title'>Shipping Address:</h3>
-            <p>{inputNames[0][0]}</p>
-            {inputNames[1].map((input, index) => (
-              <p key={index}>{`${input}`}</p>
+    <CartConsumer>
+      {({ cart, setCart }) => (
+        <div className='order-summary-container'>
+          <div className='payment-option info-container'>
+            <h3 className='order-title'>Payment:</h3>
+            <select
+              onChange={(e) => setPayment(e.target.value)}
+              name='payment'
+              id='payment'
+            >
+              <option value='Choose Payment Method'>
+                Choose Payment Method...
+              </option>
+              <option value='Cashapp'>Cashapp</option>
+              <option value='Venmo'>Venmo</option>
+              {shipping === 'Pickup' ? (
+                <option value='Cash'>Cash</option>
+              ) : null}
+            </select>
+          </div>
+          <div className='shipping-pickup-container'>
+            <div className='pickup-info info-container'>
+              <h3 className='order-title'>Your Info:</h3>
+              {inputNames[0].map((input, index) => (
+                <p key={index}>{`${input}`}</p>
+              ))}
+            </div>
+            {shipping === 'Shipping' ? (
+              <div className='shipping-address info-container'>
+                <h3 className='order-title'>Shipping Address:</h3>
+                <p>{inputNames[0][0]}</p>
+                {inputNames[1].map((input, index) => (
+                  <p key={index}>{`${input}`}</p>
+                ))}
+              </div>
+            ) : null}
+          </div>
+          <div className='cart-summary info-container'>
+            <h3 className='order-title'>Items:</h3>
+            {cart.map((product, index) => (
+              <CartProductCard
+                key={`${index}-${product.sockColor}`}
+                index={index}
+                productInfo={product}
+                cart={cart}
+              />
             ))}
           </div>
-        ) : null}
-      </div>
-      <div className='cart-summary info-container'>
-        <h3 className='order-title'>Items:</h3>
-        {cart.map((product, index) => (
-          <CartProductCard
-            key={`${index}-${product.sockColor}`}
-            index={index}
-            productInfo={product}
-            cart={cart}
-          />
-        ))}
-      </div>
-      <div className='order-total info-container'>
-        <h3 className='order-title'>Order Summary:</h3>
-        <div className='subtotal total-info'>
-          <p>Subtotal:</p>
-          <p className='cost-text'>{`$ ${subtotal}`}</p>
-        </div>
-        {shipping === 'Shipping' ? (
-          <div className='shipping total-info'>
-            <p>Shipping:</p>
-            <p className='cost-text'>{`$ ${shippingPrice}`}</p>
+          <div className='order-total info-container'>
+            <h3 className='order-title'>Order Summary:</h3>
+            <div className='subtotal total-info'>
+              <p>Subtotal:</p>
+              <p className='cost-text'>{`$ ${subtotal}`}</p>
+            </div>
+            {shipping === 'Shipping' ? (
+              <div className='shipping total-info'>
+                <p>Shipping:</p>
+                <p className='cost-text'>{`$ ${shippingPrice}`}</p>
+              </div>
+            ) : (
+              <div className='pickup total-info'>
+                <p>Pickup:</p>
+                <p className='cost-text'>Free</p>
+              </div>
+            )}
+            <div className='total total-info'>
+              <p>Total:</p>
+              <p className='total-cost-text'>{`$ ${total}`}</p>
+            </div>
           </div>
-        ) : (
-          <div className='pickup total-info'>
-            <p>Pickup:</p>
-            <p className='cost-text'>Free</p>
+          <div className='page-btn'>
+            <button onClick={() => setPage(1)}>Back</button>
+            <button onClick={handlePlaceOrder}>Place Order</button>
           </div>
-        )}
-        <div className='total total-info'>
-          <p>Total:</p>
-          <p className='total-cost-text'>{`$ ${total}`}</p>
         </div>
-      </div>
-      <div className='page-btn'>
-        <button onClick={() => setPage(1)}>Back</button>
-        <button onClick={() => setPage(3)}>Place Order</button>
-      </div>
-    </div>
+      )}
+    </CartConsumer>
   );
 };
 
