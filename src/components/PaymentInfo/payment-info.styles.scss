@@ -1,0 +1,65 @@
+.payment-option-container {
+  display: flex;
+  flex-flow: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  img {
+    width: 110px;
+    margin-top: 20px;
+    // border: 1px solid #000;
+    padding: 10px;
+  }
+
+  .username-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    
+
+    input {
+      width: 85%;
+      font-size: 1.15rem;
+      border: 1px solid #000;
+      padding: 10px;
+      background: transparent;
+    }
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 15%;
+      border: 1px solid black;
+      border-left: none;
+
+      &:hover {
+        background: rgb(231, 230, 230);
+        cursor: pointer;
+      }
+    }
+    
+  }
+
+  
+}
+
+@media (min-width: 650px) {
+  .payment-option-container {
+    margin-top: 30px;
+    margin-bottom: 0;
+
+    .username-container {
+      input {
+        width: 90%
+      }
+
+      .icon {
+        width: 10%;
+      }
+    }
+  }
+}

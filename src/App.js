@@ -18,7 +18,7 @@ function App() {
       setCart(lsCart)
     }
   }, [])
-  // const cartObj = { cart, setCart };
+  
   return (
     <Router>
       <ScrollToTop />
