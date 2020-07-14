@@ -18,7 +18,8 @@ body {
 }
 
 body.active {
-  overflow:hidden;
+  /* overflow:hidden; */
+  position: fixed;
 }
 
 button {
@@ -26,8 +27,16 @@ button {
   cursor: pointer;
 }
 
-body.active {
-  overflow: hidden;
+input {
+  border-radius: 0;
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+     -webkit-appearance: none;
+     border-radius: 0;
 }
 
 
