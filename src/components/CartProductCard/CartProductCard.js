@@ -1,9 +1,11 @@
 import React from 'react';
 import './cart-product-card.styles.scss';
-// import Color from '../Color/Color';
+import NikeWhite from '../../assets/imgs/white-200.png';
+import NikeBlack from '../../assets/imgs/black-200.png';
+import NikeGrey from '../../assets/imgs/grey-200.png';
 
 const CartProductCard = ({ productInfo, cart, setCart, index }) => {
-  const { sockImg, sockName, colorsPicked, price, size } = productInfo;
+  const { sockColor, sockName, colorsPicked, price, size } = productInfo;
   const handleRemoveItem = (index) => {
     const newCart = [...cart];
     const front = newCart.slice(0, index);
@@ -11,9 +13,21 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
     setCart([...front, ...back]);
     localStorage.cart = JSON.stringify([...front, ...back]);
   };
+  const renderImg = () => {
+    switch(sockColor) {
+      case 'White':
+        return NikeWhite
+      case 'Black':
+        return NikeBlack
+      case 'Grey':
+        return NikeGrey
+      default:
+        return NikeWhite
+    }
+  }
   return (
     <div className='cart-product-card'>
-      <img src={sockImg} alt='product' />
+      <img src={renderImg()} alt='product' />
       <div className='product-info info'>
         <div className='title-remove-btn'>
           <h3 id='product-title'>{sockName}</h3>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ColorPalette from '../ColorPalette/ColorPalette';
 import { CartConsumer } from '../../contexts/cart';
-import nikeWhite from '../../assets/imgs/Nike-Sock.png';
-import nikeBlack from '../../assets/imgs/Nike-Black-Sock.png';
-import nikeGrey from '../../assets/imgs/Nike-Grey-Sock.png';
+import nikeWhite from '../../assets/imgs/white-800.png';
+import nikeBlack from '../../assets/imgs/black-800.png';
+import nikeGrey from '../../assets/imgs/grey-800.png';
 import { colorData } from '../../utils/colorData';
 import './customize-product.styles.scss';
 

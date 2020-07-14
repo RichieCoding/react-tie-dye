@@ -10,7 +10,7 @@ const Confirm = ({ payment, setCart, cart }) => {
       setCart([]);
       localStorage.cart = JSON.stringify([]);
     };
-  }, []);
+  }, [setCart]);
 
   const renderPayment = () => {
     switch (payment) {

@@ -23,10 +23,6 @@ const CartPage = () => {
                     setCart={setCart}
                     cart={cart}
                   />
-                  // <div key={} style={{ marginBottom: '20px' }}>
-                  //   <h3>Sock Color: {product.sockColor}</h3>
-                  //   <h3>Colors Picked: {product.colorsPicked}</h3>
-                  // </div>
                 ))}
               </div>
               <div className='cart-total'>

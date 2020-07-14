@@ -2,9 +2,9 @@ import React from 'react';
 
 import './home.styles.scss';
 
-import nike from '../../assets/imgs/Nike-Sock.png';
-import blackNike from '../../assets/imgs/Nike-Black-Sock.png';
-import greyNike from '../../assets/imgs/Nike-Grey-Sock.png';
+import nike from '../../assets/imgs/white-800.png';
+import blackNike from '../../assets/imgs/black-800.png';
+import greyNike from '../../assets/imgs/grey-800.png';
 import HomeProduct from '../../components/HomeProduct/HomeProduct';
 
 const Home = ({ click }) => {
