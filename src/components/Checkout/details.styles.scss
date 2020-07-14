@@ -1,5 +1,4 @@
 .details-container {
-  margin-bottom: 80px;
   .input-container {
     display: flex;
     flex-direction: column;
@@ -26,13 +25,14 @@
   .page-btn {
     display: flex;
     justify-content: space-between;
-    margin: 50px 0 80px;
+    margin-top: 50px;
     button {
       font-size: 1.1rem;
       padding: 10px 25px;
       background: transparent;
       outline: none;
       transition: ease-in-out .3s;
+      margin-bottom: 80px;
       &:hover {
         background: black;
         color: white;
