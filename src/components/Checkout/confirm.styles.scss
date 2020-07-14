@@ -1,7 +1,6 @@
 .confirm-container {
   border: 1px solid black;
   padding: 25px;
-  margin-bottom: 80px;
   height: 100%;
   header {
     text-align: center;
@@ -22,9 +21,16 @@
   }
 }
 
+#footer {
+  content: "";
+  height: 80px;
+  width: 100%;
+  background: transparent;
+}
+
 @media (min-width: 700px) {
   .confirm-container {
     width: 40%;
-    margin: 80px auto;
+    margin: 80px auto 0;
   }
 }

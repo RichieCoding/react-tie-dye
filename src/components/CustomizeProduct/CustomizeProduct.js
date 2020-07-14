@@ -119,7 +119,7 @@ const CustomizeProduct = ({ match }) => {
                 style={
                   atcBtn !== 'Add to Cart'
                     ? { background: 'black', color: 'white' }
-                    : null
+                    : {background: 'transparent', color: 'black'}
                 }
                 onClick={() => handleAtc(cart, setCart)}
               >

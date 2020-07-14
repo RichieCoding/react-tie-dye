@@ -35,6 +35,7 @@ const Confirm = ({ payment, setCart, cart }) => {
     }
   };
   return (
+    <>
     <div className='confirm-container'>
       <header>
         <h2>Order Recieved!</h2>
@@ -66,6 +67,8 @@ const Confirm = ({ payment, setCart, cart }) => {
         ) : null}
       </div>
     </div>
+    <div id='footer'></div>
+    </>
   );
 };
 
