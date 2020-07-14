@@ -3,6 +3,7 @@ import './order-summary.styles.scss';
 import CartProductCard from '../CartProductCard/CartProductCard';
 import emailjs from 'emailjs-com';
 import { CartConsumer } from '../../contexts/cart';
+// import ReactLoading from 'react-loading';
 
 const OrderSummary = ({
   inputNames,
@@ -78,18 +79,18 @@ const OrderSummary = ({
       };
       templateId = 'template_ERb80S2H';
     }
-    // emailjs
-    //   .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //       setPage(3);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
-      setPage(3)
+    emailjs
+      .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
+      .then(
+        (result) => {
+          console.log(result.text);
+          setPage(3);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+      // setPage(3)
   };
 
   return (
@@ -165,7 +166,7 @@ const OrderSummary = ({
           </div>
           <div className='page-btn'>
             <button onClick={() => setPage(1)}>Back</button>
-            <button onClick={handlePlaceOrder}>Place Order</button>
+            <button id='place-order-btn' onClick={handlePlaceOrder}>Place Order</button>
           </div>
         </div>
       )}

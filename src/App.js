@@ -7,6 +7,7 @@ import { CartProvider } from './contexts/cart';
 import CartPage from './Containers/CartPage/CartPage';
 import ScrollToTop from './components/ScrollToTop';
 import CheckoutPage from './Containers/CheckoutPage/CheckoutPage';
+import ShopPage from './Containers/ShopPage/ShopPage';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -18,7 +19,7 @@ function App() {
       setCart(lsCart)
     }
   }, [])
-  
+
   return (
     <Router>
       <ScrollToTop />
@@ -28,6 +29,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/customize/:productId' component={CustomizeProduct} />
+            <Route path='/shop' component={ShopPage} />
             <Route path='/cart' component={CartPage} />
             <Route path='/checkout' component={CheckoutPage} />
           </Switch>
