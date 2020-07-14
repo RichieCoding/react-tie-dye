@@ -41,12 +41,7 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
           <p>Size: {size}</p>
         </div>
         <div className='colors-picked info'>
-          <div className='colors-text'>Colors: {colorsPicked.join(', ')}</div>
-          {/* <div className='colors-img'>
-            {sockColors.map((color) => (
-              <Color color={color} />
-            ))}
-          </div> */}
+          <div className='colors-text'>Colors: {colorsPicked.map(color => Object.keys(color)).join(', ')}</div>
         </div>
         <div className='product-price'>
           <p id='price'>{`$${price}`}</p>

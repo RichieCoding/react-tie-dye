@@ -4,7 +4,7 @@ import { CartConsumer } from '../../contexts/cart';
 import nikeWhite from '../../assets/imgs/white-800.png';
 import nikeBlack from '../../assets/imgs/black-800.png';
 import nikeGrey from '../../assets/imgs/grey-800.png';
-import { colorData } from '../../utils/colorData';
+import { colorObj } from '../../utils/colorData';
 import './customize-product.styles.scss';
 
 const CustomizeProduct = ({ match }) => {
@@ -45,9 +45,9 @@ const CustomizeProduct = ({ match }) => {
         setColorsPicked([...colorsPicked, color]);
       }
     } else {
-      const removed = colorsPicked.filter(
-        (pickedColor) => color !== pickedColor
-      );
+      const removed = colorsPicked.filter((pickedColor) => {
+        return Object.keys(color)[0] !== Object.keys(pickedColor)[0]
+      })
       setColorsPicked(removed);
     }
   };
@@ -63,7 +63,6 @@ const CustomizeProduct = ({ match }) => {
     };
     if (colorsPicked.length >= 2 && size) {
       setCart([...cart, productObj]);
-      console.log([...cart, productObj])
       localStorage.cart = JSON.stringify([...cart, productObj])
       setAtcBtn('\u00A0\u00A0\u00A0\u00A0Added\u00A0\u00A0\u00A0\u00A0');
       setColorsPicked([]);
@@ -87,7 +86,7 @@ const CustomizeProduct = ({ match }) => {
             </div>
 
             <ColorPalette
-              colors={colorData}
+              colors={colorObj}
               colorsPicked={colorsPicked}
               colorClick={handleColorClick}
               sockPrice={price}

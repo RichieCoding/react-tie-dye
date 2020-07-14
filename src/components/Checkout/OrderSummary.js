@@ -3,7 +3,6 @@ import './order-summary.styles.scss';
 import CartProductCard from '../CartProductCard/CartProductCard';
 import emailjs from 'emailjs-com';
 import { CartConsumer } from '../../contexts/cart';
-// import ReactLoading from 'react-loading';
 
 const OrderSummary = ({
   inputNames,
@@ -83,14 +82,12 @@ const OrderSummary = ({
       .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
       .then(
         (result) => {
-          console.log(result.text);
           setPage(3);
         },
         (error) => {
           console.log(error.text);
         }
       );
-      // setPage(3)
   };
 
   return (

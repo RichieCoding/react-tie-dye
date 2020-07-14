@@ -6,6 +6,7 @@ import PaymentInfo from '../PaymentInfo/PaymentInfo';
 
 const Confirm = ({ payment, setCart, cart }) => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     return () => {
       setCart([]);
       localStorage.cart = JSON.stringify([]);

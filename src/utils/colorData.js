@@ -14,3 +14,20 @@ export const colorData = [
   'Yellow',
   'Lime',
 ];
+
+export const colorObj = [
+  {'Black': 'Black'},
+  {'Violet': 'Violet'},
+  {'Purple': 'Purple'},
+  {'Blue': 'Blue'},
+  {'Turquoise': 'Turquoise'},
+  {'Teal': 'Teal'},
+  {'Green':'rgb(10,206,9)'},
+  {'Pink': 'Pink'},
+  {'Fuchsia': 'Fuchsia'},
+  {'Red': 'Red'},
+  {'Coral': 'Coral'},
+  {'Orange': 'Orange'},
+  {'Yellow': 'Yellow'},
+  {'Lime': 'Lime'},
+]
