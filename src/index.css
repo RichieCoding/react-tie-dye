@@ -18,8 +18,7 @@ body {
 }
 
 body.active {
-  /* overflow:hidden; */
-  position: fixed;
+  overflow:hidden;
 }
 
 button {
