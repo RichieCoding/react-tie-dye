@@ -27,7 +27,9 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
   }
   return (
     <div className='cart-product-card'>
-      <img src={renderImg()} alt='product' />
+      <div className="product-img">
+        <img src={renderImg()} alt='product' />
+      </div>
       <div className='product-info info'>
         <div className='title-remove-btn'>
           <h3 id='product-title'>{sockName}</h3>

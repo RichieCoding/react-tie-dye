@@ -5,9 +5,15 @@
   padding-top: 25px;
   margin-top: 20px;
 
-  img {
-    width: 90px;
+  .product-img {
     margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    img {
+      // width: 90px;
+      max-width: 90px;
+      align-self: center;
+    }
   }
 
   .product-info {
