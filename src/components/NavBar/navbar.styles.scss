@@ -40,6 +40,10 @@ header {
 }
 
 @media (min-width: 769px) {
+  header {
+    max-width: 1050px;
+    margin: 0 auto ;
+  }
   header .nav-container .nav-links {
     display: block;
   }

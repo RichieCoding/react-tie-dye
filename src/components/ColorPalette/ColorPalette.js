@@ -1,6 +1,8 @@
 import React from 'react';
 import Color from '../Color/Color';
 
+import './color-palette.styles.scss';
+
 const ColorPalette = ({ colorsPicked, colors, colorClick, sockPrice }) => {
   return (
     <React.Fragment>
