@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CartConsumer } from '../../contexts/cart';
 import { Link } from 'react-router-dom';
 import './nav-menu.styles.scss';
+import { BsBag } from 'react-icons/bs'
 
 const NavMenu = () => {
   const [active, setActive] = useState(false);
@@ -36,9 +37,10 @@ const NavMenu = () => {
                 </Link>
               </div>
               <div className='link'>
-                <Link to='/cart' onClick={handleMenuOpen}>
-                  {`Cart: ${cart.length}`}
-                </Link>
+                 <Link to='/cart' onClick={handleMenuOpen}>
+                    <BsBag size={45} id='cart-icon' />
+                    <p id='cart-number'>{cart.length}</p>
+                  </Link>
               </div>
             </div>
           ) : null}

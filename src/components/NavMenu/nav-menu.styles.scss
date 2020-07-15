@@ -94,6 +94,18 @@
   width: 100%;
 }
 
+.link:last-child {
+  position: relative;
+}
+
+#cart-number {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+
 @media (min-width: 769px) {
   header .nav-container .navigation {
     display: none;

@@ -2,6 +2,7 @@ import React from 'react';
 import NavMenu from '../NavMenu/NavMenu';
 import { CartConsumer } from '../../contexts/cart';
 import { Link } from 'react-router-dom';
+import { BsBag } from 'react-icons/bs';
 
 import './navbar.styles.scss';
 
@@ -28,7 +29,10 @@ const Navbar = ({ setPage }) => {
                   <Link to='/about'>About</Link>
                 </li>
                 <li>
-                  <Link to='/cart'>{`Cart: ${cart.length}`}</Link>
+                  <Link to='/cart'>
+                    <BsBag size={27} id='cart-icon' />
+                    <p id='cart-number'>{cart.length}</p>
+                  </Link>
                 </li>
               </ul>
             </nav>
