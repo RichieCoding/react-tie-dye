@@ -82,16 +82,16 @@ const OrderSummary = ({
       };
       templateId = 'template_ERb80S2H';
     }
-    emailjs
-      .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
-      .then(
-        (result) => {
-          setPage(3);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    // emailjs
+    //   .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
+    //   .then(
+    //     (result) => {
+    //       setPage(3);
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
   };
 
   return (
@@ -168,11 +168,12 @@ const OrderSummary = ({
           <div className='page-btn'>
             <button onClick={() => setPage(1)}>Back</button>
             <Button 
+              id='place-order-btn'
               isLoading={loading}
-              loadingText={<img style={{width: '25px'}} src={LoadingBars} alt='Loading...' />}
+              loadingText={<img style={{width: '20px'}} src={LoadingBars} alt='Loading...' />}
               onClick={handlePlaceOrder}
             >
-              Place Order
+             Place Order
             </Button>
           </div>
         </div>
