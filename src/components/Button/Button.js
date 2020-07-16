@@ -4,6 +4,7 @@ import './button.styles.scss';
 const Button = ({ isLoading, children, loadingText, ...props }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [hover, setHover] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -15,11 +16,33 @@ const Button = ({ isLoading, children, loadingText, ...props }) => {
     }
   }, [children])
 
+  const styles = () => {
+    const obj = {};
+    if (width & height) {
+      obj["width"] = `${width}px`
+      obj["height"] = `${height}px`
+    }
+    if (isLoading) {
+      obj['background'] = 'black'
+      obj['color'] = 'white'
+    } else {
+      obj['background'] = 'transparent'
+      obj['color'] = 'black'
+    }
+    if (hover) {
+      obj['background'] = 'black'
+      obj['color'] = 'white'
+    }
+    return obj
+  }
+
   return (
     <button 
-      className='button'
+      className={!isLoading ? 'button' : 'button loading-btn'}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       ref={ref}
-      style={width && height ? {width: `${width}px`, height: `${height}px`} : {}}
+      style={styles()}
       {...props}
     >
       {isLoading ? <p>{loadingText}</p> : children}
