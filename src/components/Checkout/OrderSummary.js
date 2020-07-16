@@ -82,16 +82,16 @@ const OrderSummary = ({
       };
       templateId = 'template_ERb80S2H';
     }
-    // emailjs
-    //   .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
-    //   .then(
-    //     (result) => {
-    //       setPage(3);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
+    emailjs
+      .send('gmail', templateId, templateParams, 'user_w0EYdaI6nSMGpyW93GQpm')
+      .then(
+        (result) => {
+          setPage(3);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
