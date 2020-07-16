@@ -6,6 +6,7 @@ import nikeBlack from '../../assets/imgs/black-800.png';
 import nikeGrey from '../../assets/imgs/grey-800.png';
 import { colorObj } from '../../utils/colorData';
 import './customize-product.styles.scss';
+import Button from '../Button/Button';
 
 const CustomizeProduct = ({ match }) => {
   const [sock, setSock] = useState({
@@ -15,7 +16,7 @@ const CustomizeProduct = ({ match }) => {
   const [price, setPrice] = useState(15);
   const [size, setSize] = useState(null);
   const [colorsPicked, setColorsPicked] = useState([]);
-  const [atcBtn, setAtcBtn] = useState('Add to Cart');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];
@@ -64,12 +65,12 @@ const CustomizeProduct = ({ match }) => {
     if (colorsPicked.length >= 2 && size) {
       setCart([...cart, productObj]);
       localStorage.cart = JSON.stringify([...cart, productObj]);
-      setAtcBtn('\u00A0\u00A0\u00A0\u00A0Added\u00A0\u00A0\u00A0\u00A0');
       setColorsPicked([]);
       setSize(null);
+      setIsLoading(true)
       setTimeout(() => {
-        setAtcBtn('Add to Cart');
-      }, 1000);
+        setIsLoading(false)
+      }, 1000)
     }
   };
 
@@ -116,16 +117,13 @@ const CustomizeProduct = ({ match }) => {
               </div>
             </div>
             <div className='text-info'>
-              <button
-                style={
-                  atcBtn !== 'Add to Cart'
-                    ? { background: 'black', color: 'white' }
-                    : { background: 'transparent', color: 'black' }
-                }
-                onClick={() => handleAtc(cart, setCart)}
+              <Button
+                isLoading={isLoading}
+                loadingText="Added"
+                onClick={() => {handleAtc(cart, setCart)}}
               >
-                {atcBtn}
-              </button>
+                Add to Cart
+              </Button>
             </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ import './order-summary.styles.scss';
 import CartProductCard from '../CartProductCard/CartProductCard';
 import emailjs from 'emailjs-com';
 import { CartConsumer } from '../../contexts/cart';
+import Button from '../Button/Button';
+import LoadingBars from '../../assets/gif/Spin-1s-450px.svg';
 
 const OrderSummary = ({
   inputNames,
@@ -15,6 +17,7 @@ const OrderSummary = ({
   const [shippingPrice, setShippingPrice] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,8 +27,8 @@ const OrderSummary = ({
       }, 0)
     );
     handleShipping();
-    setTotal(() => subtotal + shippingPrice);
-  });
+    setTotal(subtotal + shippingPrice);
+  }, [cart, total, subtotal, shippingPrice]);
 
   const handleShipping = () => {
     if (shipping === 'Shipping' && cart.length > 1) {
@@ -39,6 +42,7 @@ const OrderSummary = ({
 
   const handlePlaceOrder = () => {
     if (payment === '' || payment === 'Choose Payment Method') return;
+    setLoading(true)
 
     let templateParams;
     let templateId;
@@ -163,7 +167,13 @@ const OrderSummary = ({
           </div>
           <div className='page-btn'>
             <button onClick={() => setPage(1)}>Back</button>
-            <button id='place-order-btn' onClick={handlePlaceOrder}>Place Order</button>
+            <Button 
+              isLoading={loading}
+              loadingText={<img style={{width: '35px', paddingTop: '5px'}} src={LoadingBars} alt='Loading...' />}
+              onClick={handlePlaceOrder}
+            >
+              Place Order
+            </Button>
           </div>
         </div>
       )}
