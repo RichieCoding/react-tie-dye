@@ -169,7 +169,7 @@ const OrderSummary = ({
             <button onClick={() => setPage(1)}>Back</button>
             <Button 
               isLoading={loading}
-              loadingText={<img style={{width: '35px', paddingTop: '5px'}} src={LoadingBars} alt='Loading...' />}
+              loadingText={<img style={{width: '30px'}} src={LoadingBars} alt='Loading...' />}
               onClick={handlePlaceOrder}
             >
               Place Order
