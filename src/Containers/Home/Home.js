@@ -12,7 +12,7 @@ const Home = ({ click }) => {
     <div className='home-container'>
       <HomeProduct click={click} productImg={nike} name={'Nike Tie-Dye Socks'} color={'White'} />
       <HomeProduct click={click} productImg={blackNike} name={'Nike Tie-Dye Socks'} color={'Black'} />
-      <HomeProduct click={click} productImg={greyNike} name={'Nike Tie-Dye Socks'} color={'Grey'} />
+      <HomeProduct click={click} productImg={greyNike} name={'Nike Tie-Dye Socks'} color={'Grey'} kids={false} />
     </div>
   );
 };

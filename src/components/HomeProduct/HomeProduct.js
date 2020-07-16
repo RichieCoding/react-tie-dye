@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './home-product.styles.scss';
 
-const HomeProduct = ({ productImg, name, color }) => {
+const HomeProduct = ({ productImg, name, color, kids = true }) => {
   return (
     <section className={`home-product`}>
       <img id='sock-mockup' src={productImg} alt='' />
@@ -11,14 +11,12 @@ const HomeProduct = ({ productImg, name, color }) => {
           <h2 className='product-title'>{`${name}`}</h2>
           <p className='product-description product-price'>{color}</p>
           <p className='product-description product-price'>Price: $15</p>
-          <p className='product-description product-size'>Kids & Adult</p>
+          <p className='product-description product-size'>{kids ? 'Adults & Kids' : 'Adult'}</p>
           <p className='product-description product-custom'>
             Choose 2-3 colors
           </p>
           <Link to={`/customize/${color} ${name}`}>
-            <button id='customize-btn'>
-              Customize
-            </button>
+            <button id='customize-btn'>Customize</button>
           </Link>
         </div>
       </div>

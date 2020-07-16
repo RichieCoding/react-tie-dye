@@ -20,6 +20,7 @@ const CustomizeProduct = ({ match }) => {
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];
+
     switch (chosenColor) {
       case 'White':
         setSock({ color: chosenColor, img: nikeWhite });
@@ -33,12 +34,10 @@ const CustomizeProduct = ({ match }) => {
       default:
         setSock({ color: 'White', img: nikeWhite });
     }
-    if (colorsPicked.length === 3) {
-      setPrice(16);
-    } else {
-      setPrice(15);
-    }
-  }, [match.params.productId, colorsPicked]);
+
+    handlePrice(); 
+    
+  }, [match.params.productId, colorsPicked, size]);
 
   const handleColorClick = (color) => {
     if (colorsPicked.indexOf(color) === -1) {
@@ -63,14 +62,37 @@ const CustomizeProduct = ({ match }) => {
       size: size,
     };
     if (colorsPicked.length >= 2 && size) {
+      setIsLoading(true);
       setCart([...cart, productObj]);
       localStorage.cart = JSON.stringify([...cart, productObj]);
       setColorsPicked([]);
       setSize(null);
-      setIsLoading(true)
       setTimeout(() => {
-        setIsLoading(false)
-      }, 1000)
+        setIsLoading(false);
+      }, 1000);
+    }
+  };
+
+  const handleSize = (sizeChosen) => {
+    setSize(sizeChosen);
+    handlePrice();
+  };
+
+  const handlePrice = () => {
+    const len = colorsPicked.length;
+    if (size === 'Adult' || !size) {
+      if (len === 3) {
+        setPrice(16)
+      } else {
+        setPrice(15)
+      }
+    }
+    if (size === 'Child') {
+      if (len === 3) {
+        setPrice(11)
+      } else {
+        setPrice(10)
+      }
     }
   };
 
@@ -83,7 +105,7 @@ const CustomizeProduct = ({ match }) => {
     <CartConsumer>
       {({ cart, setCart }) => (
         <div className='customize-product'>
-          <div className="img-container">
+          <div className='img-container'>
             <img className='product-img' src={sock.img} alt='Product' />
           </div>
 
@@ -104,13 +126,15 @@ const CustomizeProduct = ({ match }) => {
               <div className='product-size'>
                 <button
                   style={size === 'Adult' ? buttonStyle : null}
-                  onClick={() => setSize('Adult')}
+                  name='Adult'
+                  onClick={(e) => handleSize(e.target.name)}
                 >
                   Adult
                 </button>
                 <button
                   style={size === 'Child' ? buttonStyle : null}
-                  onClick={() => setSize('Child')}
+                  name='Child'
+                  onClick={(e) => handleSize(e.target.name)}
                 >
                   Child
                 </button>
@@ -119,8 +143,10 @@ const CustomizeProduct = ({ match }) => {
             <div className='text-info'>
               <Button
                 isLoading={isLoading}
-                loadingText="Added"
-                onClick={() => {handleAtc(cart, setCart)}}
+                loadingText='Added'
+                onClick={() => {
+                  handleAtc(cart, setCart);
+                }}
               >
                 Add to Cart
               </Button>
