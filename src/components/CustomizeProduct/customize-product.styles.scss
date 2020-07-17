@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // padding: 10px 0;
   #mb-title {
-    // text-align: center;
     margin-bottom: 35px;
     h2 {
       margin-bottom: 10px;
@@ -59,12 +57,10 @@
     display: flex;
     align-items: center;
     width: 100%;
-    // margin: 20px 0;
     justify-content: space-between;
     border-bottom: 1px solid rgba(0, 0, 0, 0.288);
     .text {
       padding: 15.5px 0;
-      // margin-right: 10px;
     }
     margin-bottom: 20px;
   }
@@ -88,7 +84,7 @@
     display: flex;
   }
   .text-info {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     text-align: center;
     button {
       font-size: 0.9rem;
@@ -109,6 +105,13 @@
         background: transparent;
         color: inherit;
       }
+    }
+  }
+  .faq-container {
+    margin-bottom: 80px;
+    .styles_faq-row-wrapper__3Hsch .styles_faq-row__2Rd2Y {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.288);
+      padding: 10px 0;
     }
   }
 }

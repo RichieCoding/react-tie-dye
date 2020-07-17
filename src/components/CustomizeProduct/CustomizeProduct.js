@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ColorPalette from '../ColorPalette/ColorPalette';
+import Button from '../Button/Button';
+import Faq from 'react-faq-component';
 import { CartConsumer } from '../../contexts/cart';
 import nikeWhite from '../../assets/imgs/white-800.png';
 import nikeBlack from '../../assets/imgs/black-800.png';
 import nikeGrey from '../../assets/imgs/grey-800.png';
 import { colorObj } from '../../utils/colorData';
+import { productFaq } from '../../utils/productFaq';
 import './customize-product.styles.scss';
-import Button from '../Button/Button';
 
 const CustomizeProduct = ({ match }) => {
   const [sock, setSock] = useState({
@@ -150,6 +152,9 @@ const CustomizeProduct = ({ match }) => {
               >
                 Add to Cart
               </Button>
+            </div>
+            <div className="faq-container">
+              <Faq className='faq' data={productFaq} styles={{bgColor: 'transparent', borderBottom: '1px solid black'}} />
             </div>
           </div>
         </div>
