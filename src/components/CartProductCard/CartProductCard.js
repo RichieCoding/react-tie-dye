@@ -5,7 +5,7 @@ import NikeBlack from '../../assets/imgs/black-200.png';
 import NikeGrey from '../../assets/imgs/grey-200.png';
 
 const CartProductCard = ({ productInfo, cart, setCart, index }) => {
-  const { sockColor, sockName, colorsPicked, price, size } = productInfo;
+  const { sockColor, sockName, colorsPicked, price, size, pattern } = productInfo;
   const handleRemoveItem = (index) => {
     const newCart = [...cart];
     const front = newCart.slice(0, index);
@@ -39,6 +39,9 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
         </div>
         <div className='product-size info'>
           <p>Size: {size}</p>
+        </div>
+        <div className='product-size info'>
+          <p>Pattern: {pattern}</p>
         </div>
         <div className='colors-picked info'>
           <div className='colors-text'>Colors: {colorsPicked.map(color => Object.keys(color)).join(', ')}</div>

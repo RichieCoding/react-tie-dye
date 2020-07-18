@@ -53,6 +53,10 @@
           }
         }
       }
+      .product-pattern {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
   .colors-picked {
@@ -88,7 +92,7 @@
     display: flex;
   }
   .text-info {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     text-align: center;
     button {
       font-size: 0.9rem;

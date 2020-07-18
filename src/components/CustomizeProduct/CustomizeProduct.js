@@ -10,6 +10,13 @@ import { colorObj } from '../../utils/colorData';
 import { productFaq } from '../../utils/productFaq';
 import './customize-product.styles.scss';
 
+import burst from '../../assets/patterns/blast1.svg';
+import freestyle from '../../assets/patterns/freestyle1.svg';
+import polkaDot from '../../assets/patterns/polka-dot1.svg';
+import spiral from '../../assets/patterns/spiral1.svg';
+import stripe from '../../assets/patterns/stripe1.svg';
+import PatternSelector from '../PatternSelector/PatternSelector';
+
 const CustomizeProduct = ({ match }) => {
   const [sock, setSock] = useState({
     color: 'White',
@@ -19,6 +26,7 @@ const CustomizeProduct = ({ match }) => {
   const [size, setSize] = useState(null);
   const [colorsPicked, setColorsPicked] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedPattern, setSelectedPattern] = useState(null);
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];
@@ -37,8 +45,7 @@ const CustomizeProduct = ({ match }) => {
         setSock({ color: 'White', img: nikeWhite });
     }
 
-    handlePrice(); 
-    
+    handlePrice();
   }, [match.params.productId, colorsPicked, size]);
 
   const handleColorClick = (color) => {
@@ -60,6 +67,7 @@ const CustomizeProduct = ({ match }) => {
       sockColor: sock.color,
       sockImg: sock.img,
       price: price,
+      pattern: selectedPattern,
       colorsPicked: colorsPicked,
       size: size,
     };
@@ -69,6 +77,7 @@ const CustomizeProduct = ({ match }) => {
       localStorage.cart = JSON.stringify([...cart, productObj]);
       setColorsPicked([]);
       setSize(null);
+      setSelectedPattern(null);
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
@@ -84,19 +93,23 @@ const CustomizeProduct = ({ match }) => {
     const len = colorsPicked.length;
     if (size === 'Adult' || !size) {
       if (len === 3) {
-        setPrice(16)
+        setPrice(16);
       } else {
-        setPrice(15)
+        setPrice(15);
       }
     }
     if (size === 'Child') {
       if (len === 3) {
-        setPrice(11)
+        setPrice(11);
       } else {
-        setPrice(10)
+        setPrice(10);
       }
     }
   };
+
+  const patterns = ['FreeStyle', 'Stripe', 'Spiral', 'Polka Dot', 'Burst'];
+
+  const patternImgs = [freestyle, stripe, spiral, polkaDot, burst];
 
   const buttonStyle = {
     background: 'black',
@@ -123,6 +136,24 @@ const CustomizeProduct = ({ match }) => {
               colorClick={handleColorClick}
               sockPrice={price}
             />
+
+            <div className='product-size-container'>
+              <p className='size-text'>Choose Pattern:</p>
+              <div className='product-pattern'>
+                {patterns.map((pattern, index) => {
+                  return (
+                    <PatternSelector
+                      key={index}
+                      name={pattern}
+                      img={patternImgs[index]}
+                      selectedPattern={selectedPattern}
+                      setSelectedPattern={setSelectedPattern}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
             <div className='product-size-container'>
               <p className='size-text'>Choose Size:</p>
               <div className='product-size'>
@@ -142,6 +173,7 @@ const CustomizeProduct = ({ match }) => {
                 </button>
               </div>
             </div>
+
             <div className='text-info'>
               <Button
                 isLoading={isLoading}
@@ -153,8 +185,12 @@ const CustomizeProduct = ({ match }) => {
                 Add to Cart
               </Button>
             </div>
-            <div className="faq-container">
-              <Faq className='faq' data={productFaq} styles={{bgColor: 'transparent'}} />
+            <div className='faq-container'>
+              <Faq
+                className='faq'
+                data={productFaq}
+                styles={{ bgColor: 'transparent' }}
+              />
             </div>
           </div>
         </div>
