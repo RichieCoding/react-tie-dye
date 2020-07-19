@@ -3,7 +3,24 @@
   text-align: center;
   cursor: pointer;
   img {
-    width: 50px;
+    width: 40px;
     margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 373px) {
+  .pattern-container {
+    img {
+      width: 50px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  .pattern-container {
+    img {
+      width: 55px;
+    }
   }
 }
