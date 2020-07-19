@@ -5,7 +5,7 @@ import CartProductCard from '../../components/CartProductCard/CartProductCard';
 import { Link } from 'react-router-dom';
 
 const CartPage = () => {
-  const { cart, setCart } = useContext(CartConsumer);
+  const { cart } = useContext(CartConsumer);
   return (
     <div className='cart-page-container'>
       <h1>Cart</h1>
@@ -19,8 +19,6 @@ const CartPage = () => {
                 key={`${index}-${product.sockColor}`}
                 index={index}
                 productInfo={product}
-                setCart={setCart}
-                cart={cart}
               />
             ))}
           </div>

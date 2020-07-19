@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartConsumer } from '../../contexts/cart';
 import './cart-product-card.styles.scss';
 import NikeWhite from '../../assets/imgs/white-200.png';
 import NikeBlack from '../../assets/imgs/black-200.png';
 import NikeGrey from '../../assets/imgs/grey-200.png';
 
-const CartProductCard = ({ productInfo, cart, setCart, index }) => {
+const CartProductCard = ({ productInfo, index, orderSummary }) => {
   const { sockColor, sockName, colorsPicked, price, size, pattern } = productInfo;
+  const { cart, setCart } = useContext(CartConsumer);
 
   const handleRemoveItem = (index) => {
     const newCart = [...cart];
@@ -14,7 +16,7 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
     setCart([...front, ...back]);
     localStorage.cart = JSON.stringify([...front, ...back]);
   };
-  
+
   const renderImg = () => {
     switch(sockColor) {
       case 'White':
@@ -35,7 +37,7 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
       <div className='product-info info'>
         <div className='title-remove-btn'>
           <h3 id='product-title'>{sockName}</h3>
-          {setCart ? (
+          {!orderSummary ? (
             <button onClick={() => handleRemoveItem(index)}>X</button>
           ) : null}
         </div>

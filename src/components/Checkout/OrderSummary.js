@@ -139,7 +139,7 @@ const OrderSummary = ({
                 key={`${index}-${product.sockColor}`}
                 index={index}
                 productInfo={product}
-                cart={cart}
+                orderSummary={true}
               />
             ))}
           </div>
