@@ -6,6 +6,7 @@ import NikeGrey from '../../assets/imgs/grey-200.png';
 
 const CartProductCard = ({ productInfo, cart, setCart, index }) => {
   const { sockColor, sockName, colorsPicked, price, size, pattern } = productInfo;
+
   const handleRemoveItem = (index) => {
     const newCart = [...cart];
     const front = newCart.slice(0, index);
@@ -13,6 +14,7 @@ const CartProductCard = ({ productInfo, cart, setCart, index }) => {
     setCart([...front, ...back]);
     localStorage.cart = JSON.stringify([...front, ...back]);
   };
+  
   const renderImg = () => {
     switch(sockColor) {
       case 'White':

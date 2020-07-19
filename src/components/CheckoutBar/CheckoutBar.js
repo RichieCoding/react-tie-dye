@@ -1,7 +1,7 @@
 import React from 'react';
 import './checkout-bar.styles.scss';
 
-const CheckoutBar = ({ options, page, setPage }) => {
+const CheckoutBar = ({ options, page }) => {
   return (
     <div className='checkout-bar'>
       <ul>
@@ -11,7 +11,6 @@ const CheckoutBar = ({ options, page, setPage }) => {
             style={
               page === index ? { background: 'black', color: 'white' } : null
             }
-            // onClick={() => setPage(index)}
           >
             {option}
           </li>

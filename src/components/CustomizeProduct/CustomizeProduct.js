@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ColorPalette from '../ColorPalette/ColorPalette';
 import Button from '../Button/Button';
 import Faq from 'react-faq-component';
@@ -6,8 +6,8 @@ import nikeWhite from '../../assets/imgs/white-800.png';
 import nikeBlack from '../../assets/imgs/black-800.png';
 import nikeGrey from '../../assets/imgs/grey-800.png';
 import { CartConsumer } from '../../contexts/cart';
-import { colorObj } from '../../utils/colorData';
-import { productFaq } from '../../utils/productFaq';
+import { colorObj } from '../../data/colorData';
+import { productFaq } from '../../data/productFaq';
 import './customize-product.styles.scss';
 
 import burst from '../../assets/patterns/blast1.svg';
@@ -27,6 +27,8 @@ const CustomizeProduct = ({ match }) => {
   const [colorsPicked, setColorsPicked] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedPattern, setSelectedPattern] = useState(null);
+  const { cart, setCart } = useContext(CartConsumer);
+
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];
@@ -61,7 +63,7 @@ const CustomizeProduct = ({ match }) => {
     }
   };
 
-  const handleAtc = (cart, setCart) => {
+  const handleAtc = () => {
     const productObj = {
       sockName: 'Nike Tie-Dye Socks',
       sockColor: sock.color,
@@ -71,7 +73,7 @@ const CustomizeProduct = ({ match }) => {
       colorsPicked: colorsPicked,
       size: size,
     };
-    if (colorsPicked.length >= 2 && size) {
+    if (colorsPicked.length >= 2 && size && selectedPattern) {
       setIsLoading(true);
       setCart([...cart, productObj]);
       localStorage.cart = JSON.stringify([...cart, productObj]);
@@ -80,7 +82,7 @@ const CustomizeProduct = ({ match }) => {
       setSelectedPattern(null);
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+      }, 1500);
     }
   };
 
@@ -117,8 +119,6 @@ const CustomizeProduct = ({ match }) => {
   };
 
   return (
-    <CartConsumer>
-      {({ cart, setCart }) => (
         <div className='customize-product'>
           <div className='img-container'>
             <img className='product-img' src={sock.img} alt='Product' />
@@ -178,9 +178,7 @@ const CustomizeProduct = ({ match }) => {
               <Button
                 isLoading={isLoading}
                 loadingText='Added'
-                onClick={() => {
-                  handleAtc(cart, setCart);
-                }}
+                onClick={handleAtc}
               >
                 Add to Cart
               </Button>
@@ -194,8 +192,6 @@ const CustomizeProduct = ({ match }) => {
             </div>
           </div>
         </div>
-      )}
-    </CartConsumer>
   );
 };
 
