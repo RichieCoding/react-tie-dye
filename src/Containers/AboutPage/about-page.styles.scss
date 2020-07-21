@@ -1,4 +1,5 @@
 .about-page-container {
+  margin-bottom: 80px;
   .about-text {
     font-size: 2rem;
     text-align: center;
@@ -25,6 +26,8 @@
 
 @media (min-width: 770px) {
   .about-page-container {
+    max-width: 1050px;
+    margin: 100px auto 0;
     .about-text {
       width: 50%;
     }
