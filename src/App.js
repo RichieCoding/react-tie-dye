@@ -8,6 +8,7 @@ import CartPage from './Containers/CartPage/CartPage';
 import ScrollToTop from './components/ScrollToTop';
 import CheckoutPage from './Containers/CheckoutPage/CheckoutPage';
 import ShopPage from './Containers/ShopPage/ShopPage';
+import AboutPage from './Containers/AboutPage/AboutPage';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -30,6 +31,7 @@ function App() {
             <Route exact path='/' component={Home} />
             <Route path='/customize/:productId' component={CustomizeProduct} />
             <Route path='/shop' component={ShopPage} />
+            <Route path='/about' component={AboutPage} />
             <Route path='/cart' component={CartPage} />
             <Route path='/checkout' component={CheckoutPage} />
           </Switch>

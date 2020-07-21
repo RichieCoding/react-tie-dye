@@ -1,0 +1,37 @@
+.about-page-container {
+  .about-text {
+    font-size: 2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.089);
+    color: white;
+    padding: 10px 0;
+    width: 70%;
+    margin: 40px auto;
+  }
+  .how-it-works {
+    #hiw-text {
+      margin-bottom: 70px;
+    }
+  }
+  .faq {
+    width: 90%;
+    margin: 0 auto 80px;
+    .styles_faq-row-wrapper__3Hsch .styles_faq-row__2Rd2Y {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.288);
+      padding: 10px 0;
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  .about-page-container {
+    .about-text {
+      width: 50%;
+    }
+    .how-it-works {
+      #hiw-text {
+        margin-bottom: 80px;
+      }
+    }
+  }
+}
