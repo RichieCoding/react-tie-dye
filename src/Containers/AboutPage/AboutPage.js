@@ -16,7 +16,7 @@ const AboutPage = () => {
         <h2 className='about-text' id="faq-text">F.A.Q</h2>
         <FaqComponent styles={{ bgColor: 'transparent' }} data={aboutFaq} background='transparent' />
       </div>
-
+      <div id='footer'></div>
     </div>
   )
 }

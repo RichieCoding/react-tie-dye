@@ -16,11 +16,17 @@
   }
   .faq {
     width: 90%;
-    margin: 0 auto 100px;
+    margin: 0 auto;
     .styles_faq-row-wrapper__3Hsch .styles_faq-row__2Rd2Y {
       border-bottom: 1px solid rgba(0, 0, 0, 0.288);
       padding: 10px 0;
     }
+  }
+  #footer {
+    content: "";
+    height: 80px;
+    width: 100%;
+    background: transparent;
   }
 }
 
