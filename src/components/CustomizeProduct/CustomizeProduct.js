@@ -1,21 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import ColorPalette from '../ColorPalette/ColorPalette';
 import Button from '../Button/Button';
 import Faq from 'react-faq-component';
-import nikeWhite from '../../assets/imgs/white-800.png';
-import nikeBlack from '../../assets/imgs/black-800.png';
-import nikeGrey from '../../assets/imgs/grey-800.png';
+import PatternSelector from '../PatternSelector/PatternSelector';
 import { CartConsumer } from '../../contexts/cart';
 import { colorObj } from '../../data/colorData';
 import { productFaq } from '../../data/productFaq';
 import './customize-product.styles.scss';
 
+import nikeWhite from '../../assets/imgs/white-800.png';
+import nikeBlack from '../../assets/imgs/black-800.png';
+import nikeGrey from '../../assets/imgs/grey-800.png';
 import burst from '../../assets/patterns/blast1.svg';
 import freestyle from '../../assets/patterns/freestyle1.svg';
 import polkaDot from '../../assets/patterns/polka-dot1.svg';
 import spiral from '../../assets/patterns/spiral1.svg';
 import stripe from '../../assets/patterns/stripe1.svg';
-import PatternSelector from '../PatternSelector/PatternSelector';
 
 const CustomizeProduct = ({ match }) => {
   const [sock, setSock] = useState({
@@ -26,9 +27,12 @@ const CustomizeProduct = ({ match }) => {
   const [size, setSize] = useState(null);
   const [colorsPicked, setColorsPicked] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [emptyColors, setEmptyColors] = useState(false);
+  const [emptyPattern, setEmptyPattern] = useState(false);
+  const [emptySize, setEmptySize] = useState(false);
+  const [showCartBtn, setShowCartBtn] = useState(false);
   const [selectedPattern, setSelectedPattern] = useState(null);
   const { cart, setCart } = useContext(CartConsumer);
-
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];
@@ -73,17 +77,28 @@ const CustomizeProduct = ({ match }) => {
       colorsPicked: colorsPicked,
       size: size,
     };
+    if (colorsPicked.length < 2) setEmptyColors(true);
+    if (!selectedPattern) setEmptyPattern(true);
+    if (!size) setEmptySize(true);
     if (colorsPicked.length >= 2 && size && selectedPattern) {
       setIsLoading(true);
       setCart([...cart, productObj]);
       localStorage.cart = JSON.stringify([...cart, productObj]);
-      setColorsPicked([]);
-      setSize(null);
-      setSelectedPattern(null);
+      handleReset();
       setTimeout(() => {
         setIsLoading(false);
       }, 1500);
     }
+  };
+
+  const handleReset = () => {
+    setColorsPicked([]);
+    setSize(null);
+    setSelectedPattern(null);
+    setShowCartBtn(true);
+    setEmptyColors(false);
+    setEmptyPattern(false);
+    setEmptySize(false);
   };
 
   const handleSize = (sizeChosen) => {
@@ -119,79 +134,83 @@ const CustomizeProduct = ({ match }) => {
   };
 
   return (
-        <div className='customize-product'>
-          <div className='img-container'>
-            <img className='product-img' src={sock.img} alt='Product' />
-          </div>
+    <div className='customize-product'>
+      <div className='img-container'>
+        <img className='product-img' src={sock.img} alt='Product' />
+      </div>
 
-          <div className='custom-feature'>
-            <div id='mb-title'>
-              <h2>{`Nike Tie-Dye Socks`}</h2>
-              <p>{`${sock.color}`}</p>
-            </div>
+      <div className='custom-feature'>
+        <div id='mb-title'>
+          <h2>{`Nike Tie-Dye Socks`}</h2>
+          <p>{`${sock.color}`}</p>
+        </div>
 
-            <ColorPalette
-              colors={colorObj}
-              colorsPicked={colorsPicked}
-              colorClick={handleColorClick}
-              sockPrice={price}
-            />
+        <ColorPalette
+          colors={colorObj}
+          colorsPicked={colorsPicked}
+          colorClick={handleColorClick}
+          sockPrice={price}
+        />
 
-            <div className='product-size-container'>
-              <p className='size-text'>Choose Pattern:</p>
-              <div className='product-pattern'>
-                {patterns.map((pattern, index) => {
-                  return (
-                    <PatternSelector
-                      key={index}
-                      name={pattern}
-                      img={patternImgs[index]}
-                      selectedPattern={selectedPattern}
-                      setSelectedPattern={setSelectedPattern}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className='product-size-container'>
-              <p className='size-text'>Choose Size:</p>
-              <div className='product-size'>
-                <button
-                  style={size === 'Adult' ? buttonStyle : null}
-                  name='Adult'
-                  onClick={(e) => handleSize(e.target.name)}
-                >
-                  Adult
-                </button>
-                <button
-                  style={size === 'Child' ? buttonStyle : null}
-                  name='Child'
-                  onClick={(e) => handleSize(e.target.name)}
-                >
-                  Child
-                </button>
-              </div>
-            </div>
-
-            <div className='text-info'>
-              <Button
-                isLoading={isLoading}
-                loadingText='Added'
-                onClick={handleAtc}
-              >
-                Add to Cart
-              </Button>
-            </div>
-            <div className='faq-container'>
-              <Faq
-                className='faq'
-                data={productFaq}
-                styles={{ bgColor: 'transparent' }}
-              />
-            </div>
+        <div className='product-size-container'>
+          <p className='size-text'>Choose Pattern:</p>
+          <div className='product-pattern'>
+            {patterns.map((pattern, index) => {
+              return (
+                <PatternSelector
+                  key={index}
+                  name={pattern}
+                  img={patternImgs[index]}
+                  selectedPattern={selectedPattern}
+                  setSelectedPattern={setSelectedPattern}
+                />
+              );
+            })}
           </div>
         </div>
+
+        <div className='product-size-container'>
+          <p className='size-text'>Choose Size:</p>
+          <div className='product-size'>
+            <button
+              style={size === 'Adult' ? buttonStyle : null}
+              name='Adult'
+              onClick={(e) => handleSize(e.target.name)}
+            >
+              Adult
+            </button>
+            <button
+              style={size === 'Child' ? buttonStyle : null}
+              name='Child'
+              onClick={(e) => handleSize(e.target.name)}
+            >
+              Child
+            </button>
+          </div>
+        </div>
+
+        <div className='text-info'>
+          <Button isLoading={isLoading} loadingText='Added' onClick={handleAtc}>
+            Add to Cart
+          </Button>
+          {emptyColors ? <p id='error-text'>Choose colors</p> : null}
+          {emptyPattern ? <p id='error-text'>Choose a pattern</p> : null}
+          {emptySize ? <p id='error-text'>Choose a size</p> : null}
+          {showCartBtn ? (
+            <Link to='/cart'>
+              <p id='cart-btn'>Go to Cart</p>
+            </Link>
+          ) : null}
+        </div>
+        <div className='faq-container'>
+          <Faq
+            className='faq'
+            data={productFaq}
+            styles={{ bgColor: 'transparent' }}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 

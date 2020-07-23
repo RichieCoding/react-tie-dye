@@ -91,6 +91,7 @@
   .all-colors-picked {
     display: flex;
   }
+
   .text-info {
     margin-bottom: 40px;
     text-align: center;
@@ -114,7 +115,24 @@
         color: inherit;
       }
     }
+    a {
+      color: rgba(0, 0, 0, 0.74);
+      text-decoration: none;
+      &:hover {
+        color: black;
+      }
+    }
+    #cart-btn {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    #error-text {
+      margin-top: 5px;
+      font-size: 13px;
+      color: red;
+    }
   }
+
   .faq-container {
     margin-bottom: 80px;
     .styles_faq-row-wrapper__3Hsch .styles_faq-row__2Rd2Y {
