@@ -1,0 +1,41 @@
+.footer-container {
+  border-top: 1px solid rgba(255, 255, 255, 0.356);
+  color: rgba(255, 255, 255, 0.781);
+  width: 85%;
+  margin: 40px auto 0;
+  .logo {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .social-icons {
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.356);
+    display: flex;
+    justify-content: center;
+  }
+  .terms-links {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    a {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.356);
+      margin-right: 20px;
+      text-decoration: none;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  .footer-container {
+    width: 55%;
+  }
+}

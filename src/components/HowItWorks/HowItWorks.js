@@ -42,7 +42,7 @@ const HowItWorks = () => {
         </div>
         <div className="steps-container">
           <h3>Received</h3>
-          <p>YAY, you got your order! we hope you enjoy your order. If you have any questions or comments please feel free to contact us.</p>
+          <p>YAY, you got your order! we hope you enjoy your order. If you have any questions or comments please feel free to <a id="email-link" href="mailto:artsycraftyjassy@gamil.com">contact us</a>.</p>
         </div>
       </div>
     </div>

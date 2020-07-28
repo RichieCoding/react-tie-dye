@@ -6,6 +6,7 @@ import nike from '../../assets/imgs/white-800.png';
 import blackNike from '../../assets/imgs/black-800.png';
 import greyNike from '../../assets/imgs/grey-800.png';
 import HomeProduct from '../../components/HomeProduct/HomeProduct';
+import Footer from '../../components/Footer/Footer';
 
 const Home = ({ click }) => {
   return (
@@ -13,6 +14,7 @@ const Home = ({ click }) => {
       <HomeProduct click={click} productImg={nike} name={'Nike Tie-Dye Socks'} color={'White'} />
       <HomeProduct click={click} productImg={blackNike} name={'Nike Tie-Dye Socks'} color={'Black'} />
       <HomeProduct click={click} productImg={greyNike} name={'Nike Tie-Dye Socks'} color={'Grey'} kids={false} />
+      <Footer />
     </div>
   );
 };

@@ -47,10 +47,10 @@ const Confirm = ({ payment, setCart, cart }) => {
       {payment !== 'Cash' ? (
         <p>To complete your order please make payment with {payment}</p>
       ) : (
-        <h3 id='cash-payment'>
+        <p id='cash-payment'>
           Awesome, we get to see each other! We will contact you via email or
           phone to setup a time and place for you to receive your items!!!
-        </h3>
+        </p>
       )}
       <div className='order-total'>
         <p>Order Total:</p>
