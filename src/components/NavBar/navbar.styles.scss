@@ -37,6 +37,11 @@ header {
           text-decoration: none;
         }
       }
+      #cart {
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
       #cart-number {
         font-size: 12px;
         position: absolute;
@@ -45,6 +50,7 @@ header {
         transform: translate(-50%, -50%);
       }
     }
+    
   }
 }
 

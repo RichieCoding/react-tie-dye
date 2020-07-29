@@ -27,7 +27,7 @@ const Navbar = () => {
             <li>
               <Link to='/about'>About</Link>
             </li>
-            <li>
+            <li id="cart">
               <Link to='/cart'>
                 <BsBag size={27} id='cart-icon' />
                 <p id='cart-number'>{cart.length}</p>
