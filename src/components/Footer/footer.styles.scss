@@ -15,7 +15,6 @@
     justify-content: center;
   }
   .terms-links {
-    margin-bottom: 80px;
     display: flex;
     justify-content: center;
     font-size: 12px;
@@ -31,6 +30,12 @@
         color: white;
       }
     }
+  }
+  .footer {
+    content: '';
+    height: 80px;
+    width: 100%;
+    background: transparent;
   }
 }
 

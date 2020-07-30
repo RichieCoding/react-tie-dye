@@ -16,6 +16,7 @@ const Footer = () => {
         <a href="#">Terms & Conditions</a>
         <a href="#">Affliations</a>
       </div>
+      <div className="footer"></div>
     </div>
   )
 }
