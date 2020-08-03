@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineInstagram } from 'react-icons/ai'
 import './footer.styles.scss';
 
@@ -9,11 +10,13 @@ const Footer = () => {
         <h3>Artsy Crafty Jassy&copy;</h3>
       </div>
       <div className="social-icons">
-        <AiOutlineInstagram size={25}/>
+        <a id='insta-icon' href="https://www.instagram.com/shopacj/" target="_blank">
+          <AiOutlineInstagram size={25}/>
+        </a>
       </div>
       <div className="terms-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
+        <Link to="/privacy-policy">Privacy Policy</Link>
+        <Link to="/terms-and-conditions">Terms & Conditions</Link>
         <a href="#">Affliations</a>
       </div>
       <div className="footer"></div>

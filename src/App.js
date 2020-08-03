@@ -9,6 +9,8 @@ import ScrollToTop from './components/ScrollToTop';
 import CheckoutPage from './Containers/CheckoutPage/CheckoutPage';
 import ShopPage from './Containers/ShopPage/ShopPage';
 import AboutPage from './Containers/AboutPage/AboutPage';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -34,6 +36,8 @@ function App() {
             <Route path='/about' component={AboutPage} />
             <Route path='/cart' component={CartPage} />
             <Route path='/checkout' component={CheckoutPage} />
+            <Route path='/privacy-policy' component={PrivacyPolicy} />
+            <Route path='/terms-and-conditions' component={TermsAndConditions} />
           </Switch>
         </div>
       </CartProvider>
