@@ -21,6 +21,10 @@ export const aboutFaq = {
       content: "We hear ya, it's fustrating to not be able to pay the way you want to pay. We are currently a small team that wants to lower as much extra cost on our customer's end and our end as well. "
     },
     {
+      title: "Returns",
+      content: "Unfortunelty due to each item being made to order we are not accepting returns."
+    },
+    {
       title: "Cashapp & Venmo Info",
       content: "Cashapp: $jassscasssh --- Venmo: jasmine002 "
     }
