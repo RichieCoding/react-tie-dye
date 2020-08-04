@@ -50,7 +50,6 @@ const CustomizeProduct = ({ match }) => {
       default:
         setSock({ color: 'White', img: nikeWhite });
     }
-    console.log(match.params.productId);
     handlePrice();
   }, [match.params.productId, colorsPicked, size]);
 
