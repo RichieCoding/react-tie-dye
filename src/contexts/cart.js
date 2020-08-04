@@ -1,6 +1,8 @@
 import { createContext } from 'react';
 
-const { Provider, Consumer } = createContext();
+const CartContext = createContext();
 
-export const CartProvider = Provider
-export const CartConsumer = Consumer
+export const CartProvider = CartContext.Provider
+export const CartConsumer = CartContext.Consumer
+
+export default CartContext

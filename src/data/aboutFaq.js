@@ -10,7 +10,7 @@ export const aboutFaq = {
     },
     {
       title: "How does shipping cost work",
-      content: "We have created a standard pricing for shipping. For one item alone shipping will be $5. Two or more items will be $10."
+      content: "We have created a standard pricing for shipping. For one item shipping will be $5. Two or more items will be $10."
     },
     {
       title: "How does pickup work",
@@ -22,7 +22,7 @@ export const aboutFaq = {
     },
     {
       title: "Returns",
-      content: "Unfortunelty due to each item being made to order we are not accepting returns."
+      content: "Unfortunately due to each item being made to order we are not accepting returns."
     },
     {
       title: "Cashapp & Venmo Info",

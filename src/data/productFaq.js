@@ -6,7 +6,7 @@ export const productFaq = {
     }, 
     {
       title: "Care",
-      content: "Machine wash cold to best preserve colors."
+      content: "Machine wash cold."
     }
   ]
 }

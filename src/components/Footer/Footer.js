@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="terms-links">
         <Link to="/privacy-policy">Privacy Policy</Link>
         <Link to="/terms-and-conditions">Terms & Conditions</Link>
-        <a href="#">Affliations</a>
+        <Link to="/terms-and-conditions">Affliations</Link>
       </div>
       <div className="footer"></div>
     </div>

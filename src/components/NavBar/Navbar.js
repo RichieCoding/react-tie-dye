@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import NavMenu from '../NavMenu/NavMenu';
-import { CartConsumer } from '../../contexts/cart';
+import CartContext from '../../contexts/cart';
 import { Link } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
 
 import './navbar.styles.scss';
 
 const Navbar = () => {
-  const { cart } = useContext(CartConsumer);
+  const { cart } = useContext(CartContext);
   return (
     <header>
       <div className='nav-container'>

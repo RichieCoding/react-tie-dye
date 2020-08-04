@@ -4,7 +4,7 @@ import ColorPalette from '../ColorPalette/ColorPalette';
 import Button from '../Button/Button';
 import Faq from 'react-faq-component';
 import PatternSelector from '../PatternSelector/PatternSelector';
-import { CartConsumer } from '../../contexts/cart';
+import CartContext from '../../contexts/cart';
 import { colorObj } from '../../data/colorData';
 import { productFaq } from '../../data/productFaq';
 import './customize-product.styles.scss';
@@ -32,7 +32,7 @@ const CustomizeProduct = ({ match }) => {
   const [emptySize, setEmptySize] = useState(false);
   const [showCartBtn, setShowCartBtn] = useState(false);
   const [selectedPattern, setSelectedPattern] = useState(null);
-  const { cart, setCart } = useContext(CartConsumer);
+  const { cart, setCart } = useContext(CartContext);
 
   useEffect(() => {
     const chosenColor = match.params.productId.split(' ')[0];

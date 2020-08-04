@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { CartConsumer } from '../../contexts/cart';
+import CartContext from '../../contexts/cart';
 import { Link } from 'react-router-dom';
 import './nav-menu.styles.scss';
 import { BsBag } from 'react-icons/bs';
 
 const NavMenu = () => {
   const [active, setActive] = useState(false);
-  const { cart } = useContext(CartConsumer);
+  const { cart } = useContext(CartContext);
   const handleMenuOpen = () => {
     setActive((active) => !active);
     document.body.classList.toggle('active');
