@@ -62,6 +62,7 @@ const PrivacyPolicy = () => {
                 <a
                   href='http://shopacj.com'
                   target='_blank'
+                  rel="noopener noreferrer"
                   data-custom-class='link'
                 >
                   http://shopacj.com
@@ -418,6 +419,7 @@ const PrivacyPolicy = () => {
                               <a
                                 href='https://cash.app/legal/us/en-us/privacy'
                                 target='_blank'
+                                rel="noopener noreferrer"
                                 data-custom-class='link'
                               >
                                 https://cash.app/legal/us/en-us/privacy
@@ -445,6 +447,7 @@ const PrivacyPolicy = () => {
                                                 <a
                                                   href='https://venmo.com/legal/us-privacy-policy/'
                                                   target='_blank'
+                                                  rel="noopener noreferrer"
                                                   data-custom-class='link'
                                                 >
                                                   https://venmo.com/legal/us-privacy-policy/

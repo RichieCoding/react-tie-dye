@@ -50,7 +50,7 @@ const CustomizeProduct = ({ match }) => {
       default:
         setSock({ color: 'White', img: nikeWhite });
     }
-
+    console.log(match.params.productId);
     handlePrice();
   }, [match.params.productId, colorsPicked, size]);
 
@@ -179,13 +179,15 @@ const CustomizeProduct = ({ match }) => {
             >
               Adult
             </button>
-            <button
-              style={size === 'Child' ? buttonStyle : null}
-              name='Child'
-              onClick={(e) => handleSize(e.target.name)}
-            >
-              Child
-            </button>
+            {match.params.productId === 'Grey Nike Tie-Dye Socks' ? null : (
+              <button
+                style={size === 'Child' ? buttonStyle : null}
+                name='Child'
+                onClick={(e) => handleSize(e.target.name)}
+              >
+                Child
+              </button>
+            )}
           </div>
         </div>
 

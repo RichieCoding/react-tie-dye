@@ -10,7 +10,7 @@ const Footer = () => {
         <h3>Artsy Crafty Jassy&copy;</h3>
       </div>
       <div className="social-icons">
-        <a id='insta-icon' href="https://www.instagram.com/shopacj/" target="_blank">
+        <a id='insta-icon' href="https://www.instagram.com/shopacj/" target="_blank" rel="noopener noreferrer">
           <AiOutlineInstagram size={25}/>
         </a>
       </div>
