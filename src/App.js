@@ -51,7 +51,7 @@ function App() {
       }
     }
     setBg(currentBg)
-    document.body.style.backgroundImage = `url(${currentBg})`
+    // document.body.style.backgroundImage = `url(${currentBg})`
   }, [])
 
   return (
