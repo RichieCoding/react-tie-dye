@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './nav-menu.styles.scss';
 import { BsBag } from 'react-icons/bs';
 
-const NavMenu = () => {
+const NavMenu = ({ bg }) => {
   const [active, setActive] = useState(false);
   const { cart } = useContext(CartContext);
   const handleMenuOpen = () => {
@@ -13,7 +13,7 @@ const NavMenu = () => {
   };
   
   return (
-    <div className={active ? 'navigation active' : 'navigation'}>
+    <div className={active ? 'navigation active' : 'navigation'} style={{background: `url(${bg})`}}>
       <div className='ham-btn' onClick={handleMenuOpen}>
         <span></span>
         <span></span>

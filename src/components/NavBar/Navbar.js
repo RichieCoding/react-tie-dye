@@ -6,7 +6,7 @@ import { BsBag } from 'react-icons/bs';
 
 import './navbar.styles.scss';
 
-const Navbar = () => {
+const Navbar = ({ bg }) => {
   const { cart } = useContext(CartContext);
   return (
     <header>
@@ -35,7 +35,7 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-        <NavMenu />
+        <NavMenu bg={bg} />
       </div>
     </header>
   );
