@@ -362,6 +362,8 @@ const TermsAndConditions = () => {
                 msoThemetint: 166,
               }}
             >
+              We do not own nor do we claim any rights over the Nike, Inc Brand logo and name. We are not affliated with Nike, Inc.
+
               Unless otherwise indicated, the Site is our proprietary property
               and all source code, databases, functionality, software, website
               designs, audio, video, text, photographs, and graphics on the Site

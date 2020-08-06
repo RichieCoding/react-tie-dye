@@ -22,7 +22,7 @@ const Footer = () => {
       <div className='terms-links'>
         <Link to='/privacy-policy'>Privacy Policy</Link>
         <Link to='/terms-and-conditions'>Terms & Conditions</Link>
-        <a href="http://richiecoding.com" target="_blank" rel="noopener noreferrer">RichieCoding</a>
+        <a href="http://richiecoding.com" target="_blank" rel="noopener noreferrer">Website by RichieCoding</a>
       </div>
       <div className='footer'></div>
     </div>
