@@ -5559,23 +5559,6 @@ const TermsAndConditions = () => {
             '\n      ul {\n        list-style-type: square;\n      }\n      ul > li > ul {\n        list-style-type: circle;\n      }\n      ul > li > ul > li > ul {\n        list-style-type: square;\n      }\n      ol li {\n        font-family: Arial ;\n      }\n    ',
         }}
       />
-      <div
-        style={{
-          color: '#595959',
-          fontSize: 14,
-          fontFamily: 'Arial',
-          paddingTop: 16,
-        }}
-      >
-        These terms of use were created using{' '}
-        <a
-          style={{ color: 'rgb(48, 48, 241) !important' }}
-          href='https://termly.io/products/terms-and-conditions-generator/?ftseo'
-        >
-          Termly’s Terms and Conditions Generator
-        </a>
-        .
-      </div>
       <footer></footer>
     </div>
   );

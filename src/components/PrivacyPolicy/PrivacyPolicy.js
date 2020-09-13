@@ -3532,23 +3532,6 @@ const PrivacyPolicy = () => {
                           }}
                         />
                       </div>
-                      <div
-                        style={{
-                          color: '#595959',
-                          fontSize: 14,
-                          fontFamily: 'Arial',
-                          paddingTop: 16,
-                        }}
-                      >
-                        This privacy policy was created using{' '}
-                        <a
-                          style={{ color: 'rgb(48, 48, 241) !important' }}
-                          href='https://termly.io/products/privacy-policy-generator/?ftseo'
-                        >
-                          Termly’s Privacy Policy Generator
-                        </a>
-                        .
-                      </div>
                     </div>
                   </div>
                 </div>
