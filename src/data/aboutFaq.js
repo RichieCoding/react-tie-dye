@@ -22,7 +22,7 @@ export const aboutFaq = {
     },
     {
       title: "Cashapp & Venmo Info",
-      content: "Cashapp: $jassscasssh --- Venmo: @shopacj "
+      content: "Cashapp: $shopacj --- Venmo: @shopacj "
     }
   ]
 }

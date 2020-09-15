@@ -19,8 +19,8 @@ const Confirm = ({ payment, setCart, cart }) => {
         return (
           <PaymentInfo
             logo={Cashapp}
-            username='$jassscasssh'
-            link='https://cash.app/$jassscasssh'
+            username='$shopacj'
+            link='https://cash.app/$shopacj'
           />
         );
       case 'Venmo':
