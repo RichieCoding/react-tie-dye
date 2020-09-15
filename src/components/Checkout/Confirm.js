@@ -27,7 +27,7 @@ const Confirm = ({ payment, setCart, cart }) => {
         return (
           <PaymentInfo
             logo={Venmo}
-            username='jasmine002'
+            username='@shopacj'
             link='https://apps.apple.com/us/app/venmo/id351727428'
           />
         );
